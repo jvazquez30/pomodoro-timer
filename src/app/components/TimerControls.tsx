@@ -1,7 +1,7 @@
 import React from "react";
 
 
-type TimerControlProps = {
+type TimerControlsProps = {
   isRunning: boolean;
   onStart: () => void;
   onPause: () => void;
@@ -16,7 +16,7 @@ export default function TimerControls({
   onStart,
   onPause,
   onReset,
-}: TimerControlProps) {
+}: TimerControlsProps) {
 
   return (
     <div>
