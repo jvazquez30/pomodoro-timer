@@ -1,6 +1,3 @@
-import React from "react";
-
-
 type TimerControlsProps = {
   isRunning: boolean;
   onStart: () => void;
