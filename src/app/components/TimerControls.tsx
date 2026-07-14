@@ -1,3 +1,6 @@
+import { RotateCcw } from 'lucide-react';
+import Image from 'next/image';
+
 type TimerControlsProps = {
   isRunning: boolean;
   onStart: () => void;
@@ -16,21 +19,23 @@ export default function TimerControls({
 }: TimerControlsProps) {
 
   return (
-    <div>
+    <div className="flex justify-center">
+
+
       <button
         type="button"
         onClick={isRunning ? onPause : onStart}
-        className=""
+        className="p-2 text-xl font-bold border rounded-xl"
       >
-        {isRunning ? "Pause" : "Start"}
+        <p className='px-2'>{isRunning ? "Pause" : "Start"}</p>
       </button>
 
       <button
         type="button"
         onClick={onReset}
-        className=""
-      >
-        Reset
+        className="p-2 "
+        >
+          <RotateCcw size={24}/>
       </button>
     </div>
   )

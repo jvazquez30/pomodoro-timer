@@ -38,7 +38,7 @@ export default function PomodoroTimer() {
 
 
   return (
-    <div>
+    <div className="f">
      <TimerDisplay secondsLeft={secondsLeft}/>
 
      <TimerControls 

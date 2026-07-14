@@ -14,7 +14,7 @@ export default function TimerDisplay({
 
 
   return (
-    <div>
+    <div className="flex justify-center text-7xl font-[950]">
       {paddedMinutes}:{paddedSeconds}
     </div>
   )
