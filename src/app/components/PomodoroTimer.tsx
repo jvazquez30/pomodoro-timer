@@ -38,16 +38,20 @@ export default function PomodoroTimer() {
 
 
   return (
-    <div className="f">
-     <TimerDisplay secondsLeft={secondsLeft}/>
+    <div className="flex-col border rounded-2xl p-10">
 
-     <TimerControls 
-     isRunning={isRunning}
-     onPause={handlePause}
-     onStart={handleStart}
-     onReset={handleReset}
-     />
-      
+      <div className="flex p-5">
+        <TimerDisplay secondsLeft={secondsLeft} />
+
+      </div>
+
+      <TimerControls
+        isRunning={isRunning}
+        onPause={handlePause}
+        onStart={handleStart}
+        onReset={handleReset}
+      />
+
     </div>
   )
 }
