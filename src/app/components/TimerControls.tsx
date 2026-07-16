@@ -26,7 +26,7 @@ export default function TimerControls({
           onClick={isRunning ? onPause : onStart}
           className="py-2 px-10 bg-white border shadow-2xl "
         >
-          <p className='text-xl text-[#6E7F80] font-bold'>{isRunning ? "Pause" : "Start"}</p>
+          <p className='text-xl text-[#241571] font-bold'>{isRunning ? "Pause" : "Start"}</p>
         </button>
 
         <button
