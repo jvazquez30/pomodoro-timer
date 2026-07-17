@@ -62,7 +62,7 @@ export default function PomodoroTimer() {
 
 
   return (
-    <div className="flex-col border rounded-2xl p-13">
+    <div className="flex-col border rounded-2xl p-10">
 
       <div className="">
         <ModeSelector
