@@ -13,30 +13,30 @@ export default function ModeSelector({
 
 }: ModeSelectorProps) {
   return (
-    <div>
+    <div className="flex justify-around gap-5">
       <button
-      type="button"
-      className="border"
-      onClick={onFocus}
+        type="button"
+        className=" hover:bg-indigo-600 rounded-2xl"
+        onClick={onFocus}
       >
-        Focus
+        <p className="font-bold text-xs px-7">Focus Time</p>
       </button>
 
       <button
-      type="button"
-      className="border"
-      onClick={onShortBreak}
+        type="button"
+        className="hover:bg-indigo-600 rounded-2xl"
+        onClick={onShortBreak}
       >
-        Short Break
+        <p className="font-bold text-xs px-7">Short Break</p>
       </button>
 
 
       <button
-      type="button"
-      className="border"
-      onClick={onLongBreak}
+        type="button"
+        className="hover:bg-indigo-600 rounded-2xl"
+        onClick={onLongBreak}
       >
-        Long Break
+        <p className="font-bold text-xs px-7">Long Break</p>
       </button>
 
     </div>

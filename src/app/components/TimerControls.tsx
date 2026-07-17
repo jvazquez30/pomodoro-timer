@@ -18,7 +18,7 @@ export default function TimerControls({
 }: TimerControlsProps) {
 
   return (
-    <div className="flex justify-center pt-3 ">
+    <div className="flex justify-center  ">
 
       <div className='grid grid-cols-1'>
         <button
