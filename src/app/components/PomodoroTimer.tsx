@@ -5,9 +5,14 @@ import TimerControls from "./TimerControls";
 
 
 export default function PomodoroTimer() {
-  const defaultNum = 1
+  const DURATIONS = {
+    focus: 25,
+    shortBreak: 5,
+    longBreak: 15
+  }
+  const [mode, setMode] = useState<keyof typeof DURATIONS>("focus")
   const [isRunning, setIsRunning] = useState(false)
-  const [secondsLeft, setSecondsLeft] = useState(defaultNum * 60);
+  const [secondsLeft, setSecondsLeft] = useState(DURATIONS[mode] * 60);
   const endTimeRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -36,12 +41,22 @@ export default function PomodoroTimer() {
   };
 
   const handleStart = () => {
-    setIsRunning(true)
+    if (secondsLeft <= 0) {
+      setSecondsLeft(DURATIONS[mode] * 60)
+      setIsRunning(true)
+    }
   }
 
   const handleReset = () => {
     setIsRunning(false)
-    setSecondsLeft(defaultNum * 60)
+    setSecondsLeft(DURATIONS[mode] * 60)
+  }
+
+  const handleModeChange = () => {
+    
+    setIsRunning(false)
+    setSecondsLeft(DURATIONS[mode] * 60)
+
   }
 
 
