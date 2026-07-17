@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react"
 import TimerDisplay from "./TimerDisplay";
 import TimerControls from "./TimerControls";
+import ModeSelector from "./ModeSelector";
 
 
 export default function PomodoroTimer() {
@@ -31,19 +32,18 @@ export default function PomodoroTimer() {
       setSecondsLeft(remainingTime)
     }, 1000)
       
-      
-
     return () => clearInterval(id)
   }, [isRunning])
+
 
   const handlePause = () => {
     setIsRunning(false);
   };
 
   const handleStart = () => {
+    setIsRunning(true)
     if (secondsLeft <= 0) {
       setSecondsLeft(DURATIONS[mode] * 60)
-      setIsRunning(true)
     }
   }
 
@@ -52,10 +52,10 @@ export default function PomodoroTimer() {
     setSecondsLeft(DURATIONS[mode] * 60)
   }
 
-  const handleModeChange = () => {
-    
+  const handleModeChange = (newMode: keyof typeof DURATIONS) => {
+    setMode(newMode)
     setIsRunning(false)
-    setSecondsLeft(DURATIONS[mode] * 60)
+    setSecondsLeft(DURATIONS[newMode] * 60)
 
   }
 
@@ -63,6 +63,15 @@ export default function PomodoroTimer() {
 
   return (
     <div className="flex-col border rounded-2xl p-10">
+
+      <div>
+        <ModeSelector
+        onFocus={() => handleModeChange("focus")}
+        onLongBreak={() => handleModeChange("longBreak")}
+        onShortBreak={() => handleModeChange("shortBreak")}
+        />
+      </div>
+
 
       <div className="flex p-5">
         <TimerDisplay secondsLeft={secondsLeft} />
