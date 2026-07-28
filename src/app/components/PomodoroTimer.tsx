@@ -11,6 +11,12 @@ export default function PomodoroTimer() {
     shortBreak: 5,
     longBreak: 15
   }
+  const MODE_COLORS = {
+    focus: "bg-[#E0A97A]",
+    shortBreak: "bg-[#7FA98C]",
+    longBreak: "bg-[#6F8FAE]",
+  }
+
   const [mode, setMode] = useState<keyof typeof DURATIONS>("focus")
   const [isRunning, setIsRunning] = useState(false)
   const [secondsLeft, setSecondsLeft] = useState(DURATIONS[mode] * 60);
@@ -18,7 +24,7 @@ export default function PomodoroTimer() {
 
   useEffect(() => {
     if (!isRunning) return;
-    
+
     endTimeRef.current = Date.now() + secondsLeft * 1000 // gives a fixed timer for endTimeRef
 
     const id = setInterval(() => {
@@ -31,7 +37,7 @@ export default function PomodoroTimer() {
       }
       setSecondsLeft(remainingTime)
     }, 1000)
-      
+
     return () => clearInterval(id)
   }, [isRunning])
 
@@ -66,9 +72,9 @@ export default function PomodoroTimer() {
 
       <div className="">
         <ModeSelector
-        onFocus={() => handleModeChange("focus")}
-        onLongBreak={() => handleModeChange("longBreak")}
-        onShortBreak={() => handleModeChange("shortBreak")}
+          onFocus={() => handleModeChange("focus")}
+          onLongBreak={() => handleModeChange("longBreak")}
+          onShortBreak={() => handleModeChange("shortBreak")}
         />
       </div>
 
