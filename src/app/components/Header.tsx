@@ -16,7 +16,7 @@ export default function Header() {
   return (
     <div className="flex justify-between p-2 border-b-2 w-10/12">
       <p className="text-xl font-bold">Lock-In</p>
-      <ul className='flex justify-between'>
+      <ul className='flex justify-between gap-1.5'>
          <li className=''>
         <button type='button' onClick={handleToggleTheme}>
           {theme === 'light' ? <Sun size={25}></Sun> : <MoonStar size={25}></MoonStar>}
