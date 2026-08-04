@@ -30,7 +30,7 @@ body {
 @theme {
   --animate-icon-in: icon-in 0.5s ease-out;
   --animate-time-in: time-in 1s ease-out;
-  --animate-text-focus-in: text-focus-in 1s ease-in-out;
+  --animate-text-focus-in: text-focus-in 0.3s ease-in-out;
 }
 
 @keyframes icon-in {
