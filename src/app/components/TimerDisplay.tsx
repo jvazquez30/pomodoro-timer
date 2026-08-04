@@ -14,7 +14,7 @@ export default function TimerDisplay({
 
 
   return (
-    <div className="flex justify-center text-7xl text- text-shadow-lg font-[950] p-2 tabular-nums">
+    <div className="flex justify-center text-7xl text- text-shadow-lg font-[950] p-2 tabular-nums animate-time-in">
       {paddedMinutes}:{paddedSeconds}
     </div>
   )

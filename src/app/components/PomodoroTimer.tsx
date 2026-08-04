@@ -11,11 +11,7 @@ export default function PomodoroTimer() {
     shortBreak: 5,
     longBreak: 15
   }
-  const MODE_COLORS = {
-    focus: "bg-[#E0A97A]",
-    shortBreak: "bg-[#7FA98C]",
-    longBreak: "bg-[#6F8FAE]",
-  }
+ 
 
   const [mode, setMode] = useState<keyof typeof DURATIONS>("focus")
   const [isRunning, setIsRunning] = useState(false)
@@ -68,7 +64,7 @@ export default function PomodoroTimer() {
 
 
   return (
-    <div className="flex-col border rounded-2xl p-10">
+    <div className='flex-col border rounded-2xl p-10 transition-colors duration-1000'>
 
       <div className="">
         <ModeSelector
@@ -79,7 +75,7 @@ export default function PomodoroTimer() {
       </div>
 
       <div className="flex justify-center p-5">
-        <TimerDisplay secondsLeft={secondsLeft} />
+        <TimerDisplay key={mode} secondsLeft={secondsLeft} />
       </div>
 
       <TimerControls

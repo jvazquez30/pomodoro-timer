@@ -24,11 +24,13 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-  transition: background-color 0.4s ease-in-out, color 0.4s ease;
+  transition: background-color 0.9s ease-in-out, color 0.9s ease;
 }
 
 @theme {
   --animate-icon-in: icon-in 0.5s ease-out;
+  --animate-time-in: time-in 1s ease-out;
+
 }
 
 @keyframes icon-in {
@@ -39,5 +41,16 @@ body {
   to {
     transform: rotate(0deg) scale(0.5);
     opacity: 1;
+  }
+}
+
+@keyframes time-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
