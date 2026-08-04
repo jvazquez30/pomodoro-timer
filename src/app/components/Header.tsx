@@ -19,7 +19,10 @@ export default function Header() {
       <ul className='flex justify-between gap-1.5'>
          <li className=''>
         <button type='button' onClick={handleToggleTheme}>
-          {theme === 'light' ? <Sun size={25}></Sun> : <MoonStar size={25}></MoonStar>}
+          {theme === 'light' ? 
+          <Sun size={25} className='animate-icon-in'></Sun> 
+          : 
+          <MoonStar size={25} className='animate-icon-in'></MoonStar>}
           </button>  
          </li>
 
