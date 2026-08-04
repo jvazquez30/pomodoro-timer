@@ -30,16 +30,16 @@ body {
 @theme {
   --animate-icon-in: icon-in 0.5s ease-out;
   --animate-time-in: time-in 1s ease-out;
-
+  --animate-text-focus-in: text-focus-in 1s ease-in-out;
 }
 
 @keyframes icon-in {
   from {
-    transform: rotate(-90deg) scale(0.5);
+    transform: rotate(-90deg) scale(1);
     opacity: 0;
   }
   to {
-    transform: rotate(0deg) scale(0.5);
+    transform: rotate(0deg) scale(1);
     opacity: 1;
   }
 }
@@ -52,5 +52,18 @@ body {
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
   }
 }

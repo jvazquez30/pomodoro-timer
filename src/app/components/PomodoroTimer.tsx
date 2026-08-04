@@ -79,6 +79,7 @@ export default function PomodoroTimer() {
       </div>
 
       <TimerControls
+      
         isRunning={isRunning}
         onPause={handlePause}
         onStart={handleStart}
