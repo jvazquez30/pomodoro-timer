@@ -1,4 +1,3 @@
-import Image from "next/image";
 import PomodoroTimer from "./components/PomodoroTimer";
 import Header from "./components/Header";
 
@@ -8,7 +7,7 @@ export default function Home() {
       <Header />
 
       <main className="flex flex-1 w-full flex-col items-center 
-      justify-between py-32 px-16 bg-white dark:bg-[#241571]
+      justify-between py-32 px-16 bg-[#E0A97A] dark:bg-[#241571]
        sm:items-start">
         <PomodoroTimer />
       </main>
