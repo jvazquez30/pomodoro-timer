@@ -1,4 +1,5 @@
 import { RotateCcw } from 'lucide-react';
+import { useState } from 'react';
 
 type TimerControlsProps = {
   isRunning: boolean;
@@ -17,6 +18,13 @@ export default function TimerControls({
   onReset,
 }: TimerControlsProps) {
 
+  const [resetCounter, setResetCounter] = useState(0)
+
+  const handleResetCounter = () => {
+    setResetCounter(resetCounter + 1)
+    onReset()
+  }
+
   return (
     <div className="flex justify-center  ">
 
@@ -31,10 +39,10 @@ export default function TimerControls({
 
         <button
           type="button"
-          onClick={onReset}
+          onClick={handleResetCounter}
           className="p-2 mt-2 flex justify-center"
         >
-          <RotateCcw size={22} />
+          <RotateCcw size={22} key={resetCounter} className='animate-spin-once'/>
         </button>
       </div>
     </div>
