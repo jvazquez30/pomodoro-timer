@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react"
 import TimerDisplay from "./TimerDisplay";
 import TimerControls from "./TimerControls";
 import ModeSelector from "./ModeSelector";
+import SessionTracker from "./SessionTracker";
 
 
 export default function PomodoroTimer() {
@@ -12,7 +13,7 @@ export default function PomodoroTimer() {
     longBreak: 15
   }
  
-
+  const [completions, setCompletions] = useState(0)
   const [mode, setMode] = useState<keyof typeof DURATIONS>("focus")
   const [isRunning, setIsRunning] = useState(false)
   const [secondsLeft, setSecondsLeft] = useState(DURATIONS[mode] * 60);
@@ -27,6 +28,9 @@ export default function PomodoroTimer() {
       if (endTimeRef.current === null) return; // in case endTime is null
       const remainingTime = Math.round((endTimeRef.current - Date.now()) / 1000)
       if (remainingTime <= 0) {
+        if (mode === `focus`) {
+          setCompletions(completions + 1)
+        }
         setIsRunning(false)
         setSecondsLeft(0)
         return;
@@ -86,6 +90,9 @@ export default function PomodoroTimer() {
         onReset={handleReset}
       />
 
+    <SessionTracker 
+    completions={completions}
+    /> 
     </div>
   )
 }
