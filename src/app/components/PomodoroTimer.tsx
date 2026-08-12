@@ -8,7 +8,7 @@ import SessionTracker from "./SessionTracker";
 
 export default function PomodoroTimer() {
   const DURATIONS = {
-    focus: 1,
+    focus: 25,
     shortBreak: 5,
     longBreak: 15
   }
