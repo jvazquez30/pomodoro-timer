@@ -8,7 +8,7 @@ import SessionTracker from "./SessionTracker";
 
 export default function PomodoroTimer() {
   const DURATIONS = {
-    focus: 25,
+    focus: 1,
     shortBreak: 5,
     longBreak: 15
   }
@@ -33,6 +33,7 @@ export default function PomodoroTimer() {
         }
         setIsRunning(false)
         setSecondsLeft(0)
+        new Audio(`/sounds/completionSound.wav`).play()
         return;
       }
       setSecondsLeft(remainingTime)
