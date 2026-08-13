@@ -28,12 +28,14 @@ export default function PomodoroTimer() {
       if (endTimeRef.current === null) return; // in case endTime is null
       const remainingTime = Math.round((endTimeRef.current - Date.now()) / 1000)
       if (remainingTime <= 0) {
-        if (mode === `focus`) {
-          setCompletions(completions + 1)
+        if (mode === "focus") {
+          setCompletions(c => c + 1)
+          new Audio("/sounds/completionSound.m4a").play().catch(err => console.error('sound unable to play', err))
+        } else {
+          new Audio("/sounds/breakComplete.mp3").play().catch(err => console.error('sound unable to play', err))
         }
         setIsRunning(false)
         setSecondsLeft(0)
-        new Audio(`/sounds/completionSound.wav`).play()
         return;
       }
       setSecondsLeft(remainingTime)
