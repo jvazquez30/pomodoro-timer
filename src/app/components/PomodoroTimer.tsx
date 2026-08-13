@@ -12,7 +12,6 @@ export default function PomodoroTimer() {
     shortBreak: 5,
     longBreak: 15
   }
- 
   const [completions, setCompletions] = useState(0)
   const [mode, setMode] = useState<keyof typeof DURATIONS>("focus")
   const [isRunning, setIsRunning] = useState(false)
@@ -42,7 +41,7 @@ export default function PomodoroTimer() {
     }, 1000)
 
     return () => clearInterval(id)
-  }, [isRunning])
+  }, [isRunning, mode, completions]) // secondsLeft excluded to prevent constant rebuilding per second
 
 
   const handlePause = () => {
