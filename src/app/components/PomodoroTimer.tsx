@@ -5,15 +5,20 @@ import TimerControls from "./TimerControls";
 import ModeSelector from "./ModeSelector";
 import SessionTracker from "./SessionTracker";
 
+const DURATIONS = {
+  focus: 25,
+  shortBreak: 5,
+  longBreak: 15
+}
+export type Mode = keyof typeof DURATIONS
+
+function getNextMode() {
+  
+}
 
 export default function PomodoroTimer() {
-  const DURATIONS = {
-    focus: 25,
-    shortBreak: 5,
-    longBreak: 15
-  }
   const [completions, setCompletions] = useState(0)
-  const [mode, setMode] = useState<keyof typeof DURATIONS>("focus")
+  const [mode, setMode] = useState<Mode>("focus")
   const [isRunning, setIsRunning] = useState(false)
   const [secondsLeft, setSecondsLeft] = useState(DURATIONS[mode] * 60);
   const endTimeRef = useRef<number | null>(null);
@@ -60,7 +65,7 @@ export default function PomodoroTimer() {
     setSecondsLeft(DURATIONS[mode] * 60)
   }
 
-  const handleModeChange = (newMode: keyof typeof DURATIONS) => {
+  const handleModeChange = (newMode: Mode) => {
     setMode(newMode)
     setIsRunning(false)
     setSecondsLeft(DURATIONS[newMode] * 60)
