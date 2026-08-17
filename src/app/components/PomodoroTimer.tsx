@@ -12,8 +12,16 @@ const DURATIONS = {
 }
 export type Mode = keyof typeof DURATIONS
 
-function getNextMode() {
-  
+function getNextMode(finishedMode: Mode, focusCompletions: number) : Mode {
+  if (finishedMode === "focus") {
+    if (focusCompletions % 4 === 0) {
+      return "longBreak"
+    } else {
+      return "shortBreak"
+    }
+  } else {
+    return "focus"
+  }
 }
 
 export default function PomodoroTimer() {
@@ -90,16 +98,16 @@ export default function PomodoroTimer() {
       </div>
 
       <TimerControls
-      
+
         isRunning={isRunning}
         onPause={handlePause}
         onStart={handleStart}
         onReset={handleReset}
       />
 
-    <SessionTracker 
-    completions={completions}
-    /> 
+      <SessionTracker
+        completions={completions}
+      />
     </div>
   )
 }
