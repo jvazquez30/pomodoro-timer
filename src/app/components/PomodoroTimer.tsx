@@ -12,7 +12,7 @@ const DURATIONS = {
 }
 export type Mode = keyof typeof DURATIONS
 
-function getNextMode(finishedMode: Mode, focusCompletions: number) : Mode {
+function getNextMode(finishedMode: Mode, focusCompletions: number): Mode {
   if (finishedMode === "focus") {
     if (focusCompletions % 4 === 0) {
       return "longBreak"
@@ -40,20 +40,23 @@ export default function PomodoroTimer() {
       if (endTimeRef.current === null) return; // in case endTime is null
       const remainingTime = Math.round((endTimeRef.current - Date.now()) / 1000)
       if (remainingTime <= 0) {
+        const next = getNextMode(mode, completions + 1)
         if (mode === "focus") {
           setCompletions(c => c + 1)
           new Audio("/sounds/completionSound.m4a").play().catch(err => console.error('sound unable to play', err))
         } else {
           new Audio("/sounds/breakComplete.mp3").play().catch(err => console.error('sound unable to play', err))
         }
-        setIsRunning(false)
-        setSecondsLeft(0)
+        setMode(next)
+        setIsRunning(next !== "focus") 
+        setSecondsLeft(DURATIONS[next] * 60)
         return;
       }
       setSecondsLeft(remainingTime)
     }, 1000)
 
     return () => clearInterval(id)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isRunning, mode, completions]) // secondsLeft excluded to prevent constant rebuilding per second
 
 
@@ -90,6 +93,7 @@ export default function PomodoroTimer() {
           onFocus={() => handleModeChange("focus")}
           onLongBreak={() => handleModeChange("longBreak")}
           onShortBreak={() => handleModeChange("shortBreak")}
+          mode={mode}
         />
       </div>
 
@@ -98,7 +102,6 @@ export default function PomodoroTimer() {
       </div>
 
       <TimerControls
-
         isRunning={isRunning}
         onPause={handlePause}
         onStart={handleStart}

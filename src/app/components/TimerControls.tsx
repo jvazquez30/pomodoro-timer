@@ -9,8 +9,6 @@ type TimerControlsProps = {
 };
 
 
-
-
 export default function TimerControls({
   isRunning,
   onStart,
