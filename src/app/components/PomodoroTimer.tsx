@@ -10,11 +10,14 @@ const DURATIONS = {
   shortBreak: 5,
   longBreak: 15
 }
+
+export const SESSIONS_TILL_LONG_BREAK = 4 as const
+
 export type Mode = keyof typeof DURATIONS
 
 function getNextMode(finishedMode: Mode, focusCompletions: number): Mode {
   if (finishedMode === "focus") {
-    if (focusCompletions % 4 === 0) {
+    if (focusCompletions % SESSIONS_TILL_LONG_BREAK === 0) {
       return "longBreak"
     } else {
       return "shortBreak"
@@ -110,6 +113,7 @@ export default function PomodoroTimer() {
 
       <SessionTracker
         completions={completions}
+        mode={mode}
       />
     </div>
   )
