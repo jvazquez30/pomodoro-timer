@@ -86,19 +86,15 @@ export default function PomodoroTimer() {
 
   }
 
-
-
   return (
-    <div className='flex-col border rounded-2xl p-10 transition-colors duration-1000'>
+    <div className='border rounded-2xl p-10 transition-colors duration-1000'>
 
-      <div className="">
         <ModeSelector
           onFocus={() => handleModeChange("focus")}
           onLongBreak={() => handleModeChange("longBreak")}
           onShortBreak={() => handleModeChange("shortBreak")}
           mode={mode}
         />
-      </div>
 
       <div className="flex justify-center p-5">
         <TimerDisplay key={mode} secondsLeft={secondsLeft} />
